@@ -23,4 +23,5 @@ Rails.application.routes.draw do
   # root "posts#index"
    # Root route
    root 'home#index'
+   post '/login', to: 'sessions#create'
 end

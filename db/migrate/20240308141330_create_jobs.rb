@@ -1,6 +1,7 @@
 class CreateJobs < ActiveRecord::Migration[7.1]
   def change
-    create_table :jobs do |t|
+    create_table :jobs, id: false do |t|
+      t.primary_key :job_id
       t.string :name
       t.string :company
       t.string :status

@@ -1,12 +1,14 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  job_id: 
   name: MyString
   company: MyString
   status: MyString
   user: one
 
 two:
+  job_id: 
   name: MyString
   company: MyString
   status: MyString

@@ -1,36 +1,28 @@
 class UsersController < ApplicationController
     before_action :set_user, only: [:show]
-  
-    # GET /users
+      # GET /users
     def index
       @users = User.all
       render json: @users
     end
-  
-    # GET /users/:id
+      # GET /users/:id
     def show
       render json: @user
     end
-  
-    # POST /users
+      # POST /users
     def create
       @user = User.new(user_params)
-  
-      if @user.save
+        if @user.save
         render json: @user, status: :created, location: @user
       else
         render json: @user.errors, status: :unprocessable_entity
       end
     end
-  
-    private
-  
-    def set_user
+      private
+      def set_user
       @user = User.find(params[:id])
     end
-  
-    def user_params
-      params.require(:user).permit(:username, :password, :email)
+      def user_params
+      params.require(:user).permit(:name, :password, :email)
     end
   end
-  

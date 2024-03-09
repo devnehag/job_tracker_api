@@ -10,16 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_21_073927) do
-  create_table "checklist_items", force: :cascade do |t|
+ActiveRecord::Schema[7.1].define(version: 2024_03_09_023128) do
+  create_table "checklist_items", primary_key: "item_id", force: :cascade do |t|
     t.string "description"
+    t.boolean "status"
     t.integer "checklist_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["checklist_id"], name: "index_checklist_items_on_checklist_id"
   end
 
-  create_table "checklists", force: :cascade do |t|
+  create_table "checklists", primary_key: "checklist_id", force: :cascade do |t|
     t.string "title"
     t.integer "job_id", null: false
     t.datetime "created_at", null: false
@@ -27,7 +28,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_21_073927) do
     t.index ["job_id"], name: "index_checklists_on_job_id"
   end
 
-  create_table "jobs", force: :cascade do |t|
+  create_table "jobs", primary_key: "job_id", force: :cascade do |t|
     t.string "name"
     t.string "company"
     t.string "status"
@@ -37,10 +38,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_21_073927) do
     t.index ["user_id"], name: "index_jobs_on_user_id"
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "username"
-    t.string "password_digest"
+  create_table "users", primary_key: "user_id", force: :cascade do |t|
+    t.string "name"
     t.string "email"
+    t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
